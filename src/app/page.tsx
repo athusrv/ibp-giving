@@ -2,13 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import {
-  PoundSterlingIcon as BanknotePound,
-  Building,
-  Copy,
-  CreditCard,
-  Hash,
-} from "lucide-react";
+import { Copy } from "lucide-react";
 import Image from "next/image";
 import { toast } from "sonner";
 
@@ -18,22 +12,18 @@ export default function Home() {
       label: "Dízimos",
       text: "tesouraria@ibpituba.com.br",
       icon: (
-        <img
-          src="/bradesco_black.svg"
-          alt="logo_bradesco"
-          className="h-6 w-6"
-        />
+        <div className="w-6 h-6 relative">
+          <Image fill src="/bradesco_black.svg" alt="logo_bradesco" />
+        </div>
       ),
     },
     {
       label: "Ofertas",
       text: "tesouraria@ibpituba.com.br",
       icon: (
-        <img
-          src="/santander_black.svg"
-          alt="logo_santander"
-          className="h-6 w-6"
-        />
+        <div className="w-6 h-6 relative">
+          <Image fill src="/santander_black.svg" alt="logo_santander" />
+        </div>
       ),
     },
   ];
