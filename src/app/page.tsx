@@ -8,8 +8,6 @@ import {
   Copy,
   CreditCard,
   Hash,
-  Mail,
-  Phone,
 } from "lucide-react";
 import Image from "next/image";
 import { toast } from "sonner";
@@ -18,37 +16,49 @@ export default function Home() {
   const copyItems = [
     {
       label: "Dízimos",
-      text: "PIX: ",
-      icon: <Mail className="h-6 w-6" />,
+      text: "tesouraria@ibpituba.com.br",
+      icon: (
+        <img
+          src="/bradesco_black.svg"
+          alt="logo_bradesco"
+          className="h-6 w-6"
+        />
+      ),
     },
     {
       label: "Ofertas",
-      text: "+1 (555) 123-4567",
-      icon: <Phone className="h-6 w-6" />,
+      text: "tesouraria@ibpituba.com.br",
+      icon: (
+        <img
+          src="/santander_black.svg"
+          alt="logo_santander"
+          className="h-6 w-6"
+        />
+      ),
     },
   ];
 
   const bankAccounts = [
     {
       bank: "Banco Bradesco",
-      accountName: "John Doe",
-      accountNumber: "1234567890",
-      routingNumber: "987654321",
-      swift: "FNBUS12345",
+      accountName: "Igreja Batista a Pituba",
+      accountNumber: "3646-3",
+      routingNumber: "5581-6",
+      swift: "13.659.792/0001-52",
     },
     {
       bank: "Banco Santander",
-      accountName: "John Doe",
-      accountNumber: "0987654321",
-      routingNumber: "123456789",
-      swift: "GBCUS67890",
+      accountName: "Igreja Batista a Pituba",
+      accountNumber: "3747",
+      routingNumber: "13006040-1",
+      swift: "13.659.792/0001-52",
     },
   ];
 
   const copyToClipboard = (text: string, label: string) => {
     navigator.clipboard.writeText(text);
-    toast("Copied to clipboard", {
-      description: `${label} has been copied to your clipboard.`,
+    toast("Copiado com sucesso", {
+      description: `${label} foi copiado para a área de transferência`,
       duration: 3000,
     });
   };
@@ -57,15 +67,10 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center py-8 px-4 bg-gray-50">
       {/* Logo and Header Section */}
       <div className="flex flex-col items-center mb-12">
-        <div className="w-24 h-24 mb-6 relative">
-          <Image
-            src="/placeholder.svg?height=96&width=96"
-            alt="Logo"
-            fill
-            className="object-contain"
-          />
+        <div className="w-40 h-40 relative">
+          <Image src="/IBP.svg" alt="Logo" fill className="object-contain" />
         </div>
-        <h1 className="text-3xl font-bold text-center mb-2">
+        <h1 className="text-3xl font-bold text-center mb-2 -mt-8">
           Dízimos e Ofertas
         </h1>
         <p className="text-muted-foreground text-center max-w-md font-mono text-xs">
@@ -111,19 +116,18 @@ export default function Home() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
-                <div className="flex justify-between">
+                <div className="flex justify-between gap-2">
                   <div className="flex items-center">
-                    <Building className="h-6 w-6 mr-2" />
-                    <span className="text-muted-foreground">Account Name</span>
+                    <span className="text-muted-foreground">Beneficiário</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span>{account.accountName}</span>
+                  <div className="flex items-center gap-2 flex-1 overflow-hidden justify-end ">
+                    <span className="truncate">{account.accountName}</span>
                     <Button
                       variant="ghost"
                       size="icon"
                       className="h-6 w-6"
                       onClick={() =>
-                        copyToClipboard(account.accountName, "Account Name")
+                        copyToClipboard(account.accountName, "Beneficiário")
                       }
                     >
                       <Copy className="h-3 w-3" />
@@ -134,10 +138,7 @@ export default function Home() {
 
                 <div className="flex justify-between">
                   <div className="flex items-center">
-                    <CreditCard className="h-6 w-6 mr-2" />
-                    <span className="text-muted-foreground">
-                      Account Number
-                    </span>
+                    <span className="text-muted-foreground">Agência</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span>{account.accountNumber}</span>
@@ -146,7 +147,7 @@ export default function Home() {
                       size="icon"
                       className="h-6 w-6"
                       onClick={() =>
-                        copyToClipboard(account.accountNumber, "Account Number")
+                        copyToClipboard(account.accountNumber, "Agência")
                       }
                     >
                       <Copy className="h-3 w-3" />
@@ -157,9 +158,8 @@ export default function Home() {
 
                 <div className="flex justify-between">
                   <div className="flex items-center">
-                    <Hash className="h-6 w-6 mr-2" />
                     <span className="text-muted-foreground">
-                      Routing Number
+                      Conta Corrente
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
@@ -169,7 +169,7 @@ export default function Home() {
                       size="icon"
                       className="h-6 w-6"
                       onClick={() =>
-                        copyToClipboard(account.routingNumber, "Routing Number")
+                        copyToClipboard(account.routingNumber, "Conta corrente")
                       }
                     >
                       <Copy className="h-3 w-3" />
@@ -180,8 +180,7 @@ export default function Home() {
 
                 <div className="flex justify-between">
                   <div className="flex items-center">
-                    <BanknotePound className="h-6 w-6 mr-2" />
-                    <span className="text-muted-foreground">SWIFT Code</span>
+                    <span className="text-muted-foreground">CNPJ </span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span>{account.swift}</span>
@@ -189,9 +188,7 @@ export default function Home() {
                       variant="ghost"
                       size="icon"
                       className="h-6 w-6"
-                      onClick={() =>
-                        copyToClipboard(account.swift, "SWIFT Code")
-                      }
+                      onClick={() => copyToClipboard(account.swift, "CNPJ")}
                     >
                       <Copy className="h-3 w-3" />
                     </Button>
