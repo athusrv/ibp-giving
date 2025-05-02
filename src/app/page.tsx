@@ -8,8 +8,6 @@ import {
   Copy,
   CreditCard,
   Hash,
-  Mail,
-  Phone,
 } from "lucide-react";
 import Image from "next/image";
 import { toast } from "sonner";
@@ -18,30 +16,30 @@ export default function Home() {
   const copyItems = [
     {
       label: "Dízimos",
-      text: "PIX: ",
-      icon: <Mail className="h-6 w-6" />,
+      text: "PIX: tesouraria@ibpituba.com.br",
+      icon: <img src="/santander_black.svg" alt="logo_santander"  className="h-6 w-6"/>,
     },
     {
       label: "Ofertas",
-      text: "+1 (555) 123-4567",
-      icon: <Phone className="h-6 w-6" />,
+      text: "PIX: tesouraria@ibpituba.com.br",
+      icon: <img src="/bradesco_black.svg" alt="logo_bradesco"  className="h-6 w-6"/>,
     },
   ];
 
   const bankAccounts = [
     {
       bank: "Banco Bradesco",
-      accountName: "John Doe",
-      accountNumber: "1234567890",
-      routingNumber: "987654321",
-      swift: "FNBUS12345",
+      accountName: "Igreja Batista a Pituba",
+      accountNumber: "3646-3",
+      routingNumber: "5581-6",
+      swift: "13.659.792/0001-52",
     },
     {
       bank: "Banco Santander",
-      accountName: "John Doe",
-      accountNumber: "0987654321",
-      routingNumber: "123456789",
-      swift: "GBCUS67890",
+      accountName: "Igreja Batista a Pituba",
+      accountNumber: "3747",
+      routingNumber: "13006040-1",
+      swift: "13.659.792/0001-52",
     },
   ];
 
@@ -59,7 +57,7 @@ export default function Home() {
       <div className="flex flex-col items-center mb-12">
         <div className="w-24 h-24 mb-6 relative">
           <Image
-            src="/placeholder.svg?height=96&width=96"
+            src="/IBP.svg"
             alt="Logo"
             fill
             className="object-contain"
@@ -114,7 +112,7 @@ export default function Home() {
                 <div className="flex justify-between">
                   <div className="flex items-center">
                     <Building className="h-6 w-6 mr-2" />
-                    <span className="text-muted-foreground">Account Name</span>
+                    <span className="text-muted-foreground">Nome da Conta</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span>{account.accountName}</span>
@@ -136,7 +134,7 @@ export default function Home() {
                   <div className="flex items-center">
                     <CreditCard className="h-6 w-6 mr-2" />
                     <span className="text-muted-foreground">
-                      Account Number
+                      Agência
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
@@ -159,7 +157,7 @@ export default function Home() {
                   <div className="flex items-center">
                     <Hash className="h-6 w-6 mr-2" />
                     <span className="text-muted-foreground">
-                      Routing Number
+                      Conta Corrente
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
@@ -181,7 +179,7 @@ export default function Home() {
                 <div className="flex justify-between">
                   <div className="flex items-center">
                     <BanknotePound className="h-6 w-6 mr-2" />
-                    <span className="text-muted-foreground">SWIFT Code</span>
+                    <span className="text-muted-foreground">CNPJ </span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span>{account.swift}</span>
