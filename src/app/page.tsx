@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Copy } from "lucide-react";
+import { Copy, MoveRight } from "lucide-react";
 import Image from "next/image";
 import { toast } from "sonner";
 
@@ -52,14 +52,6 @@ const anexoAccounts = [
 ];
 
 export default function Home() {
-  const copyToClipboard = (text: string, label: string) => {
-    navigator.clipboard.writeText(text);
-    toast("Copiado com sucesso", {
-      description: `${label} foi copiado para a área de transferência`,
-      duration: 3000,
-    });
-  };
-
   return (
     <main className="flex min-h-screen flex-col items-center py-8 px-4 bg-gray-50">
       {/* Logo and Header Section */}
@@ -78,239 +70,40 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="flex flex-col w-full max-w-4xl gap-3">
-        <h1 className="text-2xl font-bold text-center">
-          Para Dízimos e Ofertas
-        </h1>
-        <div className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-3">
-          {bankAccounts.map((account, index) => (
-            <Card key={index} className="mb-2">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-4 text-md">
-                  <account.BankImage />
-                  {account.bank}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-2">
-                  <div className="flex justify-between gap-2">
-                    <div className="flex items-center">
-                      <span className="text-muted-foreground">
-                        Beneficiário
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2 flex-1 overflow-hidden justify-end ">
-                      <span className="truncate">{account.accountName}</span>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="h-6 w-6"
-                        onClick={() =>
-                          copyToClipboard(account.accountName, "Beneficiário")
-                        }
-                      >
-                        <Copy className="h-3 w-3" />
-                      </Button>
-                    </div>
-                  </div>
-                  <Separator />
-
-                  <div className="flex justify-between">
-                    <div className="flex items-center">
-                      <span className="text-muted-foreground">Agência</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span>{account.routingNumber}</span>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="h-6 w-6"
-                        onClick={() =>
-                          copyToClipboard(account.routingNumber, "Agência")
-                        }
-                      >
-                        <Copy className="h-3 w-3" />
-                      </Button>
-                    </div>
-                  </div>
-                  <Separator />
-
-                  <div className="flex justify-between">
-                    <div className="flex items-center">
-                      <span className="text-muted-foreground">
-                        Conta Corrente
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span>{account.accountNumber}</span>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="h-6 w-6"
-                        onClick={() =>
-                          copyToClipboard(
-                            account.accountNumber,
-                            "Conta corrente"
-                          )
-                        }
-                      >
-                        <Copy className="h-3 w-3" />
-                      </Button>
-                    </div>
-                  </div>
-                  <Separator />
-
-                  <div className="flex justify-between">
-                    <div className="flex items-center">
-                      <span className="text-muted-foreground">CNPJ </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span>{account.swift}</span>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="h-6 w-6"
-                        onClick={() => copyToClipboard(account.swift, "CNPJ")}
-                      >
-                        <Copy className="h-3 w-3" />
-                      </Button>
-                    </div>
-                  </div>
-                  <Separator />
-
-                  <div className="flex justify-between">
-                    <div className="flex items-center">
-                      <span className="text-muted-foreground">PIX </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span>{account.pix}</span>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="h-6 w-6"
-                        onClick={() => copyToClipboard(account.pix, "PIX")}
-                      >
-                        <Copy className="h-3 w-3" />
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        <h1 className="text-2xl font-bold text-center">Ofertas para o Anexo</h1>
-        {anexoAccounts.map((account, index) => (
-          <Card key={index} className="mb-2">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-4 text-md">
-                <account.BankImage />
-                {account.bank}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <div className="flex justify-between gap-2">
-                  <div className="flex items-center">
-                    <span className="text-muted-foreground">Beneficiário</span>
-                  </div>
-                  <div className="flex items-center gap-2 flex-1 overflow-hidden justify-end ">
-                    <span className="truncate">{account.accountName}</span>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-6 w-6"
-                      onClick={() =>
-                        copyToClipboard(account.accountName, "Beneficiário")
-                      }
-                    >
-                      <Copy className="h-3 w-3" />
-                    </Button>
-                  </div>
-                </div>
-                <Separator />
-
-                <div className="flex justify-between">
-                  <div className="flex items-center">
-                    <span className="text-muted-foreground">Agência</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span>{account.routingNumber}</span>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-6 w-6"
-                      onClick={() =>
-                        copyToClipboard(account.routingNumber, "Agência")
-                      }
-                    >
-                      <Copy className="h-3 w-3" />
-                    </Button>
-                  </div>
-                </div>
-                <Separator />
-
-                <div className="flex justify-between">
-                  <div className="flex items-center">
-                    <span className="text-muted-foreground">
-                      Conta Corrente
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span>{account.accountNumber}</span>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-6 w-6"
-                      onClick={() =>
-                        copyToClipboard(account.accountNumber, "Conta corrente")
-                      }
-                    >
-                      <Copy className="h-3 w-3" />
-                    </Button>
-                  </div>
-                </div>
-                <Separator />
-
-                <div className="flex justify-between">
-                  <div className="flex items-center">
-                    <span className="text-muted-foreground">CNPJ </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span>{account.swift}</span>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-6 w-6"
-                      onClick={() => copyToClipboard(account.swift, "CNPJ")}
-                    >
-                      <Copy className="h-3 w-3" />
-                    </Button>
-                  </div>
-                </div>
-                <Separator />
-
-                <div className="flex justify-between">
-                  <div className="flex items-center">
-                    <span className="text-muted-foreground">PIX </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span>{account.pix}</span>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-6 w-6"
-                      onClick={() => copyToClipboard(account.pix, "PIX")}
-                    >
-                      <Copy className="h-3 w-3" />
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
+      <div className="flex flex-col max-w-4xl w-full gap-2">
+        <a href="/giving">
+          <div className="flex  items-center w-full p-4 rounded-lg border border-input bg-white gap-4 hover:bg-gray-50 transition cursor-pointer active:scale-99 active:bg-gray-100">
+            <div className="flex flex-col justify-center flex-1">
+              <h3 className="flex items-center gap-4 text-md font-bold leading-tight hidden lg:block">
+                Quero dar meu dízimo ou uma oferta
+              </h3>
+              <h3 className="flex items-center gap-4 text-md font-bold leading-tight block lg:hidden">
+                Dízimos e Ofertas
+              </h3>
+              <p className="text-muted-foreground text-xs  leading-none">
+                Honre ao Senhor oferecendo a Ele uma parte daquilo que Ele te
+                deu para administrar
+              </p>
+            </div>
+            <MoveRight />
+          </div>
+        </a>
+        <a href="/anexo">
+          <div className="flex  items-center w-full p-4 rounded-lg border border-input bg-white gap-4 hover:bg-gray-50 transition cursor-pointer active:scale-99 active:bg-gray-100">
+            <div className="flex flex-col justify-center flex-1">
+              <h3 className="flex items-center gap-4 text-md font-bold leading-tight hidden lg:block">
+                Quero dar uma oferta para o Anexo
+              </h3>
+              <h3 className="flex items-center gap-4 text-md font-bold leading-tight block lg:hidden">
+                Ofertas para o Anexo
+              </h3>
+              <p className="text-muted-foreground text-xs  leading-none">
+                Nos ajude a manter o Anexo funcionando e alcançando vidas
+              </p>
+            </div>
+            <MoveRight />
+          </div>
+        </a>
       </div>
     </main>
   );
