@@ -28,7 +28,7 @@ const bankAccounts = [
     ),
     bank: "237 - Banco Bradesco",
     accountName: "Igreja Batista da Pituba",
-    routingNumber: "3646-3",
+    routingNumber: "3646",
     accountNumber: "5581-6",
     swift: "13.659.792/0001-52",
     pix: "tesouraria@ibpituba.com.br",
